@@ -37,4 +37,4 @@ jobs:
       - name: set remote
         run: heroku git:remote -a ${{secrets.HEROKU_APP_NAME}}
       - name: push
-        run: git subtree push --prefix backend heroku master
+        run: git subtree push -f --prefix backend heroku master
