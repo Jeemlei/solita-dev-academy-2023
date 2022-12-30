@@ -24,10 +24,12 @@ jobs:
         run: npm run build:full
       - name: remove .gitignore
         run: rm ../.gitignore
+      - name: set git ident name
+        run: git config user.email "eemeli.ingervo@gmail.com"
       - name: add production build
         run: git add ..
       - name: commit production build
-        run: git commit -m "frontend production build" --author="Github Actions <eemeli.ingervo@gmail.com>"
+        run: git commit -m "frontend production build"
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
