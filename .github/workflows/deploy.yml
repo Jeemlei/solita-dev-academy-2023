@@ -22,6 +22,12 @@ jobs:
         run: npm install
       - name: build
         run: npm run build:full
+      - name: remove .gitignore
+        run: rm ../.gitignore
+      - name: add production build
+        run: git add .
+      - name: commit production build
+        run: git commit -m "frontend production build"
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
