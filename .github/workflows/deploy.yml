@@ -25,7 +25,9 @@ jobs:
       - name: remove .gitignore
         run: rm ../.gitignore
       - name: set git ident name
-        run: git config user.email "eemeli.ingervo@gmail.com"
+        run: |
+          git config user.email "eemeli.ingervo@gmail.com"
+          git config user.name "Github Actions"
       - name: add production build
         run: git add ..
       - name: commit production build
