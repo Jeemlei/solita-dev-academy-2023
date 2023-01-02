@@ -2,7 +2,6 @@ from app import app
 from flask import send_from_directory
 
 
-# Frontend & static files -------------------------v
 @app.route('/', defaults={'path': ''})
 @app.route('/<path>', methods=['GET'])
 def index(path):
