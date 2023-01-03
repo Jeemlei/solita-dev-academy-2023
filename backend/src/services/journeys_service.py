@@ -4,7 +4,7 @@ from db import db_engine
 
 def import_journey_csv(file):
     # Renaming the columns to match db names
-    df = pd.read_csv(file.file).rename(
+    df = pd.read_csv(file).rename(
         columns={'Departure': 'departure_time',
                  'Return': 'return_time',
                  'Departure station id': 'deparure_station',
