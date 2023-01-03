@@ -10,5 +10,6 @@ def get_stations():
 def get_station_by_id(id):
     result = db.session.execute(
         f'SELECT * FROM stations WHERE id={id}').fetchone()
-    if not result: return 'Station not found', 404
+    if not result:
+        return 'Station not found', 404
     return format_station_result(result)

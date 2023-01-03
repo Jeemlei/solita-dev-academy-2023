@@ -4,7 +4,7 @@ DROP TABLE IF EXISTS stations;
 CREATE TABLE stations (
   id INTEGER PRIMARY KEY,
   station_name TEXT NOT NULL,
-  latlng POINT NOT NULL
+  latlng POINT
 );
 
 CREATE TABLE journeys (
@@ -474,3 +474,7 @@ INSERT INTO stations (id, station_name, latlng) VALUES ('402','Bermudankuja','(6
 INSERT INTO stations (id, station_name, latlng) VALUES ('403','Verkkosaari','(60.1895561753156,24.9775480765957)');
 INSERT INTO stations (id, station_name, latlng) VALUES ('404','Sompasaari','(60.1829308185667,24.9760758238593)');
 INSERT INTO stations (id, station_name, latlng) VALUES ('405','Jollas','(60.1644074899774,25.0616678668253)');
+--City bike service locations:
+--INSERT INTO stations (id, station_name, latlng) VALUES ('754','Lintumetsä',NULL);
+--INSERT INTO stations (id, station_name, latlng) VALUES ('997','Workshop Helsinki',NULL);
+--INSERT INTO stations (id, station_name, latlng) VALUES ('999','Bike Production',NULL);
