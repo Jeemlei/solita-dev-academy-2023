@@ -1,5 +1,5 @@
 # Frontend
-Run all the commands in the `frontend`-directory.
+Run all the following commands in the `frontend`-directory.
 ## Installation
 Requires Node version 16+ and npm.
 
@@ -9,9 +9,9 @@ npm install
 ```
 
 ### Development mode
-Backend needs to be running.
+Backend needs to be running in development mode.
 
-Provide following environment variables in `.env`-file:
+Provide the following environment variables in `.env`-file:
 ```
 REACT_APP_BACKEND_URL=<Backend URL>
 NODE_ENV='development'
