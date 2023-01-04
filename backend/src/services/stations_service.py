@@ -3,7 +3,7 @@ from services.tools import format_station_result
 
 
 def get_stations():
-    result = db.session.execute('SELECT * FROM stations').fetchall()
+    result = db.session.execute('SELECT * FROM stations ORDER BY id').fetchall()
     return list(map(lambda station: format_station_result(station), result))
 
 

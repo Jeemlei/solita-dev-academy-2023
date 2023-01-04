@@ -10,7 +10,7 @@ CREATE TABLE stations (
 CREATE TABLE journeys (
     id SERIAL PRIMARY KEY,
     departure_time TIMESTAMP NOT NULL,
-    deparure_station INTEGER NOT NULL REFERENCES stations (id),
+    departure_station INTEGER NOT NULL REFERENCES stations (id),
     return_time TIMESTAMP NOT NULL,
     return_station INTEGER NOT NULL REFERENCES stations (id),
     distance INTEGER NOT NULL,

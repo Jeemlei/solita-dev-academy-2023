@@ -1,7 +1,7 @@
 from app import app
 from services import stations_service
 from flask import request
-from services.journeys_service import import_journey_csv
+from services.journeys_service import import_journey_csv, get_journeys
 
 
 @app.route('/api/ping', methods=['GET'])
@@ -19,8 +19,15 @@ def station(id):
     return stations_service.get_station_by_id(id)
 
 
-@app.route('/api/journeys', methods=['POST'])
+@app.route('/api/journeys', methods=['GET', 'POST'])
 def journeys():
-    file = request.files.getlist('file')[0]
-    import_journey_csv(file)
-    return f'{file.filename} succesfully imported', 201
+    if request.method == 'GET':
+        params = request.args.to_dict()
+        return get_journeys(params.get('page'),
+                            params.get('page_size'),
+                            params.get('order_by'))
+
+    if request.method == 'POST':
+        file = request.files.getlist('file')[0]
+        import_journey_csv(file)
+        return f'{file.filename} succesfully imported', 201
