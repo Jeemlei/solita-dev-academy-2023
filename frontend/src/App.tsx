@@ -1,7 +1,8 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import ImportPage from './components/ImportPage'
-import BACKEND_URL from './config'
+import JourneyList from './components/JourneyList'
+import { BACKEND_URL, DEV } from './config'
 
 function App() {
 	const [backendStatus, setBackendStatus] = useState('unknown')
@@ -15,11 +16,17 @@ function App() {
 			})
 			.catch(() => setBackendStatus('Connection error!'))
 	}
+
 	return (
-		<div className="App">
-			<p>Backend status: {backendStatus}</p>
-			<button onClick={ping}>Ping</button>
+		<div className="container">
+			{DEV && (
+				<>
+					<p>Backend status: {backendStatus}</p>
+					<button onClick={ping}>Ping</button>
+				</>
+			)}
 			<ImportPage />
+			<JourneyList />
 		</div>
 	)
 }

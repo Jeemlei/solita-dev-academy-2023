@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { import_journeys_csv } from '../../services/data-service'
+import { importJourneysCSV } from '../../services/data-service'
 import ImportForm from './ImportForm'
 
 function ImportPage() {
@@ -15,7 +15,7 @@ function ImportPage() {
 		if (!file) return
 		setUploading(true)
 		try {
-			await import_journeys_csv(file)
+			await importJourneysCSV(file)
 			const form = e.target as HTMLFormElement
 			form.reset()
 			setFile(null)
