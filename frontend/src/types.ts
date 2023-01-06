@@ -20,3 +20,11 @@ export type ColumnName =
 	| 'return_station'
 	| 'distance'
 	| 'duration'
+
+export type LatLng = [number, number]
+
+export interface Station {
+	id: number
+	name: string
+	latlng: LatLng
+}

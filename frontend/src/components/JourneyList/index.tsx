@@ -7,15 +7,15 @@ import ListItem from './ListItem'
 import PaginationNav from '../PaginationNav'
 
 const JourneyList = () => {
-	const [page, setPage] = useLocalStorageState('page', {
+	const [page, setPage] = useLocalStorageState('journeysPage', {
 		defaultValue: 0,
 	})
 	const pageSize = 25
 	const orderBy: ColumnName = 'departure_time'
-	/* const [pageSize, setPageSize] = useLocalStorageState('pageSize', {
+	/* const [pageSize, setPageSize] = useLocalStorageState('journeysPageSize', {
 		defaultValue: 25,
 	})
-	const [orderBy, setOrderBy] = useLocalStorageState<ColumnName>('orderBy', {
+	const [orderBy, setOrderBy] = useLocalStorageState<ColumnName>('journeysOrderBy', {
 		defaultValue: 'departure_time',
 	}) */
 	const [journeys, setJourneys] = useLocalStorageState<Array<Journey>>(

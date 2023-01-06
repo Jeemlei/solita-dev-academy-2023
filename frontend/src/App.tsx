@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import ImportPage from './components/ImportPage'
 import JourneyList from './components/JourneyList'
+import StationList from './components/StationList'
 import { BACKEND_URL, DEV } from './config'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 			)}
 			<ImportPage />
 			<JourneyList />
+			<StationList />
 		</div>
 	)
 }

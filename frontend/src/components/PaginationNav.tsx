@@ -7,7 +7,7 @@ interface Props {
 	lastPage: number
 }
 
-const PageNav = ({ page, setPage, lastPage }: Props) => {
+const PaginationNav = ({ page, setPage, lastPage }: Props) => {
 	return (
 		<Pagination style={{ justifyContent: 'center' }}>
 			<Pagination.First
@@ -27,4 +27,4 @@ const PageNav = ({ page, setPage, lastPage }: Props) => {
 	)
 }
 
-export default PageNav
+export default PaginationNav
