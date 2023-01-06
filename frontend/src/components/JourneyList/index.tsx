@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import useLocalStorageState from 'use-local-storage-state'
 import { Table } from 'react-bootstrap'
-import { getJourneys } from '../../services/data-service'
+import { getJourneys } from '../../services/journey-service'
 import { ColumnName, Journey } from '../../types'
 import ListItem from './ListItem'
-import PageNav from './PageNav'
+import PaginationNav from '../PaginationNav'
 
 const JourneyList = () => {
 	const [page, setPage] = useLocalStorageState('page', {
@@ -40,8 +40,9 @@ const JourneyList = () => {
 
 	return (
 		<>
-			<PageNav page={page} setPage={setPage} lastPage={lastPage} />
-			<Table striped={journeys.length > 0} bordered>
+			<h2>Journeys</h2>
+			<PaginationNav page={page} setPage={setPage} lastPage={lastPage} />
+			<Table striped={journeys.length > 0} bordered responsive>
 				<thead>
 					<tr>
 						<th>Departure</th>
@@ -56,7 +57,7 @@ const JourneyList = () => {
 					))}
 				</tbody>
 			</Table>
-			<PageNav page={page} setPage={setPage} lastPage={lastPage} />
+			<PaginationNav page={page} setPage={setPage} lastPage={lastPage} />
 		</>
 	)
 }

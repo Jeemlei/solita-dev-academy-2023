@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { importJourneysCSV } from '../../services/data-service'
+import { importJourneysCSV } from '../../services/journey-service'
 import ImportForm from './ImportForm'
 
 function ImportPage() {
