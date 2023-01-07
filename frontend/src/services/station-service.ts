@@ -9,3 +9,10 @@ export const getStations = async (): Promise<Array<Station>> => {
 	)
 	return toStationArray(res.data)
 }
+
+export const getStationAddress = async (lat: number, lng: number): Promise<string> => {
+	const res = await axios.get(
+		`${BACKEND_URL}/api/geocode/address?lat=${lat}&lng=${lng}`
+	)
+	return res.data
+}

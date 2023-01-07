@@ -3,11 +3,16 @@ import { Station } from '../../types'
 
 interface Props {
 	station: Station
+	handleClick: (station: Station) => void
 }
 
-const ListItem = ({ station }: Props) => {
+const ListItem = ({ station, handleClick }: Props) => {
 	return (
-		<tr>
+		<tr
+			onClick={() => {
+				handleClick(station)
+			}}
+		>
 			<td>{station.id}</td>
 			<td>{station.name}</td>
 			<td>
