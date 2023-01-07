@@ -1,6 +1,8 @@
 # Backend
 
-**Backend requires PostgreSQL-database** initialized with [init.sql](init.sql)-file. ([PostgreSQL setup](https://www.prisma.io/dataguide/postgresql/setting-up-a-local-postgresql-database) & [Running SQL file](https://www.postgresql.r2schools.com/how-to-execute-sql-file-in-postgresql/))
+**Backend requires** 
+- PostgreSQL-database initialized with [init.sql](init.sql)-file. ([PostgreSQL setup](https://www.prisma.io/dataguide/postgresql/setting-up-a-local-postgresql-database) & [Running SQL file](https://www.postgresql.r2schools.com/how-to-execute-sql-file-in-postgresql/))
+- [Geoapify API-key](https://myprojects.geoapify.com/)
 
 Run all the following commands in the `backend`-directory.
 
@@ -24,6 +26,7 @@ Provide the following environment variables in `.env`-file:
 FLASK_APP=src/app.py
 FLASK_DEBUG=true
 DB_URI='postgresql://<username>:<password>@<server>/<database>'
+GEOAPIFY_KEY='<Geoapify API-key>'
 ```
 
 Start backend with:
@@ -41,6 +44,7 @@ Provide the following environment variables in `.env`-file:
 ```
 FLASK_APP=src/app.py
 DB_URI='postgresql://<username>:<password>@<server>/<database>'
+GEOAPIFY_KEY='<Geoapify API-key>'
 ```
 
 Start backend with:

@@ -2,6 +2,7 @@ from app import app
 from services import stations_service
 from flask import request
 from services.journeys_service import import_journey_csv, get_journeys
+from services.geocoding_service import get_address
 
 
 @app.route('/api/ping', methods=['GET'])
@@ -31,3 +32,9 @@ def journeys():
         file = request.files.getlist('file')[0]
         import_journey_csv(file)
         return f'{file.filename} succesfully imported', 201
+
+
+@app.route('/api/geocode/address', methods=['GET'])
+def address():
+    params = request.args.to_dict()
+    return get_address(params.get('lat'), params.get('lng'))
