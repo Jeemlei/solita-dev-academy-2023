@@ -12,10 +12,10 @@ def format_station_result(db_station):
 
 def format_journey_result(db_journey):
     return {'id': db_journey[0],
-            'departure_time': db_journey[1],
+            'departure_time': db_journey[1].strftime("%FT%H:%M:%S"),
             'ds_id': db_journey[2],
             'departure_station': db_journey[3],
-            'return_time': db_journey[4],
+            'return_time': db_journey[4].strftime("%FT%H:%M:%S"),
             'rs_id': db_journey[5],
             'return_station': db_journey[6],
             'distance': db_journey[7],
