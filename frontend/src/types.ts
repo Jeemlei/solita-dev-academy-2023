@@ -28,3 +28,10 @@ export interface Station {
 	name: string
 	latlng: LatLng
 }
+
+export interface DetailedStation extends Station {
+	starting_journeys: number
+	ending_journeys: number
+	avg_starting_distance: number
+	avg_ending_distance: number
+}

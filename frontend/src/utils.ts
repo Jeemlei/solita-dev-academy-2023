@@ -1,4 +1,4 @@
-import { Journey, LatLng, Station } from './types'
+import { DetailedStation, Journey, LatLng, Station } from './types'
 
 const isString = (text: unknown): text is string => {
 	return typeof text === 'string' || text instanceof String
@@ -34,13 +34,43 @@ const isLatLng = (latlng: unknown): latlng is LatLng => {
 	)
 }
 
+const isStation = (station: unknown): station is Station => {
+	return (
+		station !== null &&
+		typeof station === 'object' &&
+		'id' in station &&
+		isNumber(station.id) &&
+		'name' in station &&
+		isString(station.name) &&
+		'latlng' in station &&
+		isLatLng(station.latlng)
+	)
+}
+
 export const toStationArray = (data: unknown) => {
 	if (!Array.isArray(data)) return []
-	return data.filter((station): station is Station => {
-		return (
-			isNumber(station.id) &&
-			isString(station.name) &&
-			isLatLng(station.latlng)
-		)
-	})
+	return data.filter(isStation)
+}
+
+const isDetailedStation = (station: unknown): station is DetailedStation => {
+	return (
+		isStation(station) &&
+		'starting_journeys' in station &&
+		'ending_journeys' in station &&
+		'avg_starting_distance' in station &&
+		'avg_ending_distance' in station
+	)
+}
+
+export const toDetailedStation = (data: unknown): DetailedStation => {
+	if (isDetailedStation(data)) return data
+	return {
+		id: -1,
+		name: 'Unknown',
+		latlng: [0, 0],
+		starting_journeys: 0,
+		ending_journeys: 0,
+		avg_starting_distance: 0,
+		avg_ending_distance: 0,
+	}
 }
