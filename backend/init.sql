@@ -17,6 +17,8 @@ CREATE TABLE journeys (
     duration INTEGER NOT NULL
 );
 
+CREATE INDEX departure_time_idx ON journeys (departure_time, departure_station);
+
 INSERT INTO stations (id, station_name, latlng) VALUES ('501','Hanasaari','(60.16582,24.840319)');
 INSERT INTO stations (id, station_name, latlng) VALUES ('503','Keilalahti','(60.171524,24.827467)');
 INSERT INTO stations (id, station_name, latlng) VALUES ('505','Westendinasema','(60.168266,24.805758)');
