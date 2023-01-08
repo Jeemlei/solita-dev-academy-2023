@@ -5,6 +5,7 @@ import {
 	getStationDetails,
 } from '../../../services/station-service'
 import { DetailedStation, Station } from '../../../types'
+import Map from '../../Map'
 
 interface Props {
 	station: Station
@@ -25,38 +26,47 @@ const StationDetails = ({ station }: Props) => {
 
 	return (
 		<>
-			{address || (
-				<Placeholder animation="glow">
+			{(address && <b>{address}</b>) || (
+				<Placeholder animation="wave">
 					<Placeholder xs={8} />
 				</Placeholder>
 			)}
-			<br />
-			Journeys started:{' '}
+			<hr />
+			<Map
+				stations={[station]}
+				popup={false}
+				center={station.latlng}
+				zoom={15}
+			/>
+			<hr />
+			<b>Journeys started:</b>{' '}
 			{(stationDetails && stationDetails.starting_journeys) || (
 				<Placeholder animation="glow">
 					{' '}
 					<Placeholder xs={1} />
 				</Placeholder>
 			)}
-			<br />- average distance:
+			<br />
+			<i>- average distance:</i>{' '}
 			{(stationDetails &&
-				` ${(stationDetails.avg_starting_distance / 1000).toFixed(1)}km`) || (
+				`${(stationDetails.avg_starting_distance / 1000).toFixed(1)}km`) || (
 				<Placeholder animation="glow">
 					{' '}
 					<Placeholder xs={1} />
 				</Placeholder>
 			)}
 			<br />
-			Journeys ended:{' '}
+			<b>Journeys ended:</b>{' '}
 			{(stationDetails && stationDetails.ending_journeys) || (
 				<Placeholder animation="glow">
 					{' '}
 					<Placeholder xs={1} />
 				</Placeholder>
 			)}
-			<br />- average distance:
+			<br />
+			<i>- average distance:</i>{' '}
 			{(stationDetails &&
-				` ${(stationDetails.avg_ending_distance / 1000).toFixed(1)}km`) || (
+				`${(stationDetails.avg_ending_distance / 1000).toFixed(1)}km`) || (
 				<Placeholder animation="glow">
 					{' '}
 					<Placeholder xs={1} />

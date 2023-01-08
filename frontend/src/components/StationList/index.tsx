@@ -6,6 +6,7 @@ import { Station } from '../../types'
 import ListItem from './ListItem'
 import PaginationNav from '../PaginationNav'
 import StationModal from './StationModal'
+import Map from '../Map'
 
 const StationList = () => {
 	const [page, setPage] = useLocalStorageState('stationsPage', {
@@ -43,6 +44,9 @@ const StationList = () => {
 	return (
 		<>
 			<h2>Stations</h2>
+			<hr />
+			<Map stations={stations} popup={true} center={[60.22, 24.94]} zoom={11} />
+			<hr />
 			<PaginationNav
 				page={page}
 				setPage={setPage}
