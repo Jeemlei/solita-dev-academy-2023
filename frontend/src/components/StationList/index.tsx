@@ -7,15 +7,15 @@ import ListItem from './ListItem'
 import PaginationNav from '../PaginationNav'
 import StationModal from './StationModal'
 import Map from '../Map'
+import PageSizeSelector from '../PageSizeSelector'
 
 const StationList = () => {
 	const [page, setPage] = useLocalStorageState('stationsPage', {
 		defaultValue: 0,
 	})
-	const pageSize = 25
-	/* const [pageSize, setPageSize] = useLocalStorageState('stationsPageSize', {
+	const [pageSize, setPageSize] = useLocalStorageState('stationsPageSize', {
 		defaultValue: 25,
-	}) */
+	})
 	const [stations, setStations] = useLocalStorageState<Array<Station>>(
 		'stations',
 		{
@@ -51,6 +51,12 @@ const StationList = () => {
 				page={page}
 				setPage={setPage}
 				lastPage={Math.floor(stations.length / pageSize)}
+			/>
+			<PageSizeSelector
+				pageSizeOptions={[10, 25, 50]}
+				pageSize={pageSize}
+				setPageSize={setPageSize}
+				setPage={setPage}
 			/>
 			<Table striped={stations.length > 0} bordered hover responsive>
 				<thead>

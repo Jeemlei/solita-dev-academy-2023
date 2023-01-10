@@ -2,22 +2,25 @@ import React, { useEffect } from 'react'
 import useLocalStorageState from 'use-local-storage-state'
 import { Table } from 'react-bootstrap'
 import { getJourneys } from '../../services/journey-service'
-import { ColumnName, Journey } from '../../types'
+import { Journey } from '../../types'
 import ListItem from './ListItem'
 import PaginationNav from '../PaginationNav'
+import PageSizeSelector from '../PageSizeSelector'
 
 const JourneyList = () => {
 	const [page, setPage] = useLocalStorageState('journeysPage', {
 		defaultValue: 0,
 	})
-	const pageSize = 25
-	const orderBy: ColumnName = 'departure_time'
-	/* const [pageSize, setPageSize] = useLocalStorageState('journeysPageSize', {
+	const [pageSize, setPageSize] = useLocalStorageState('journeysPageSize', {
 		defaultValue: 25,
 	})
-	const [orderBy, setOrderBy] = useLocalStorageState<ColumnName>('journeysOrderBy', {
-		defaultValue: 'departure_time',
-	}) */
+	const orderBy = 'departure_time'
+	/* const [orderBy, setOrderBy] = useLocalStorageState<ColumnName>(
+		'journeysOrderBy',
+		{
+			defaultValue: 'departure_time',
+		}
+	) */
 	const [journeys, setJourneys] = useLocalStorageState<Array<Journey>>(
 		'journeys',
 		{
@@ -42,6 +45,12 @@ const JourneyList = () => {
 		<>
 			<h2>Journeys</h2>
 			<PaginationNav page={page} setPage={setPage} lastPage={lastPage} />
+			<PageSizeSelector
+				pageSizeOptions={[10, 25, 50]}
+				pageSize={pageSize}
+				setPageSize={setPageSize}
+				setPage={setPage}
+			/>
 			<Table striped={journeys.length > 0} bordered responsive>
 				<thead>
 					<tr>
