@@ -46,6 +46,8 @@ const Map = ({ stations, popup, center, zoom }: Props) => {
 					{popup && (
 						<Popup>
 							<b>{station.name}</b>
+							<br />
+							ID: {station.id}
 						</Popup>
 					)}
 				</Marker>

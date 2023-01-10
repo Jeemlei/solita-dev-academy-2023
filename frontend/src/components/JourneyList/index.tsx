@@ -44,13 +44,13 @@ const JourneyList = () => {
 	return (
 		<>
 			<h2>Journeys</h2>
-			<PaginationNav page={page} setPage={setPage} lastPage={lastPage} />
 			<PageSizeSelector
 				pageSizeOptions={[10, 25, 50]}
 				pageSize={pageSize}
 				setPageSize={setPageSize}
 				setPage={setPage}
 			/>
+			<PaginationNav page={page} setPage={setPage} lastPage={lastPage} />
 			<Table striped={journeys.length > 0} bordered responsive>
 				<thead>
 					<tr>

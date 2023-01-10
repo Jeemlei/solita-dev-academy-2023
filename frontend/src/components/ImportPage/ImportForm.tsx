@@ -13,9 +13,15 @@ const ImportForm = ({ onSubmit, onFileChange, uploading }: Props) => {
 		<Form onSubmit={onSubmit}>
 			<Form.Group className="mb-2">
 				<Form.Label>Add journey data:</Form.Label>
-				<Form.Control type="file" accept="text/csv" onChange={onFileChange} />
+				<Form.Control
+					type="file"
+					accept="text/csv"
+					onChange={onFileChange}
+					style={{ maxWidth: '35rem' }}
+				/>
 				<Form.Text muted>
-					Processing of the file can take up to a minute, dependending on the size of the file!
+					Processing of the file can take up to a minute, dependending on the
+					size of the file!
 				</Form.Text>
 			</Form.Group>
 			<Button type="submit" disabled={uploading}>

@@ -47,16 +47,16 @@ const StationList = () => {
 			<hr />
 			<Map stations={stations} popup={true} center={[60.22, 24.94]} zoom={11} />
 			<hr />
-			<PaginationNav
-				page={page}
-				setPage={setPage}
-				lastPage={Math.floor(stations.length / pageSize)}
-			/>
 			<PageSizeSelector
 				pageSizeOptions={[10, 25, 50]}
 				pageSize={pageSize}
 				setPageSize={setPageSize}
 				setPage={setPage}
+			/>
+			<PaginationNav
+				page={page}
+				setPage={setPage}
+				lastPage={Math.floor(stations.length / pageSize)}
 			/>
 			<Table striped={stations.length > 0} bordered hover responsive>
 				<thead>
