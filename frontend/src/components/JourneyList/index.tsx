@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import useLocalStorageState from 'use-local-storage-state'
-import { Table } from 'react-bootstrap'
+import { Placeholder, Table } from 'react-bootstrap'
 import { getJourneys, getLastPage } from '../../services/journey-service'
 import { Journey } from '../../types'
 import ListItem from './ListItem'
@@ -29,6 +29,8 @@ const JourneyList = () => {
 		}
 	)
 
+	const [loadingJourneys, setLoadingJourneys] = useState(false)
+
 	useEffect(() => {
 		getLastPage(pageSize)
 			.then(data => setLastPage(data))
@@ -37,9 +39,13 @@ const JourneyList = () => {
 
 	useEffect(() => {
 		let canceled = false
+		setLoadingJourneys(true)
 		getJourneys(page, pageSize, orderBy)
 			.then(data => {
-				if (!canceled) setJourneys(data)
+				if (!canceled) {
+					setJourneys(data)
+					setLoadingJourneys(false)
+				}
 			})
 			.catch(error => console.log(error))
 		return function cancel() {
@@ -67,9 +73,34 @@ const JourneyList = () => {
 					</tr>
 				</thead>
 				<tbody>
-					{journeys.map(journey => (
-						<ListItem key={journey.id} journey={journey} />
-					))}
+					{(loadingJourneys &&
+						Array.from({ length: pageSize }, (v, i) => i).map(key => (
+							<tr key={key}>
+								<td>
+									<Placeholder animation="wave">
+										<Placeholder xs={6} />
+									</Placeholder>
+								</td>
+								<td>
+									<Placeholder animation="wave">
+										<Placeholder xs={9} />
+									</Placeholder>
+								</td>
+								<td>
+									<Placeholder animation="wave">
+										<Placeholder xs={3} />
+									</Placeholder>
+								</td>
+								<td>
+									<Placeholder animation="wave">
+										<Placeholder xs={3} />
+									</Placeholder>
+								</td>
+							</tr>
+						))) ||
+						journeys.map(journey => (
+							<ListItem key={journey.id} journey={journey} />
+						))}
 				</tbody>
 			</Table>
 			<PaginationNav page={page} setPage={setPage} lastPage={lastPage ?? 0} />
