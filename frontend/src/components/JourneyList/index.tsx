@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import useLocalStorageState from 'use-local-storage-state'
 import { Table } from 'react-bootstrap'
-import { getJourneys } from '../../services/journey-service'
+import { getJourneys, getLastPage } from '../../services/journey-service'
 import { Journey } from '../../types'
 import ListItem from './ListItem'
 import PaginationNav from '../PaginationNav'
@@ -14,6 +14,7 @@ const JourneyList = () => {
 	const [pageSize, setPageSize] = useLocalStorageState('journeysPageSize', {
 		defaultValue: 25,
 	})
+	const [lastPage, setLastPage] = useState<number>()
 	const orderBy = 'departure_time'
 	/* const [orderBy, setOrderBy] = useLocalStorageState<ColumnName>(
 		'journeysOrderBy',
@@ -27,7 +28,12 @@ const JourneyList = () => {
 			defaultValue: [],
 		}
 	)
-	const lastPage = 10
+
+	useEffect(() => {
+		getLastPage(pageSize)
+			.then(data => setLastPage(data))
+			.catch(error => console.log(error))
+	}, [pageSize])
 
 	useEffect(() => {
 		let canceled = false
@@ -50,7 +56,7 @@ const JourneyList = () => {
 				setPageSize={setPageSize}
 				setPage={setPage}
 			/>
-			<PaginationNav page={page} setPage={setPage} lastPage={lastPage} />
+			<PaginationNav page={page} setPage={setPage} lastPage={lastPage ?? 0} />
 			<Table striped={journeys.length > 0} bordered responsive>
 				<thead>
 					<tr>
@@ -66,7 +72,7 @@ const JourneyList = () => {
 					))}
 				</tbody>
 			</Table>
-			<PaginationNav page={page} setPage={setPage} lastPage={lastPage} />
+			<PaginationNav page={page} setPage={setPage} lastPage={lastPage ?? 0} />
 		</>
 	)
 }

@@ -4,7 +4,7 @@ const isString = (text: unknown): text is string => {
 	return typeof text === 'string' || text instanceof String
 }
 
-const isNumber = (number: unknown): number is number => {
+export const isNumber = (number: unknown): number is number => {
 	return typeof number === 'number' || number instanceof Number
 }
 
