@@ -48,3 +48,14 @@ def get_journeys(page, page_size, order_by):
                                   LIMIT {page_size} OFFSET {page*page_size}')
 
     return list(map(lambda journey: format_journey_result(journey), result))
+
+
+def get_last_page(page_size):
+    page_size = parse_to_int(page_size, default=0)
+    if (page_size < 1):
+        return 0
+
+    result = db.session.execute(f'SELECT COUNT(id) / {page_size * 1.0} \
+                                  FROM journeys').fetchone()
+
+    return parse_to_int(result[0], default=0)

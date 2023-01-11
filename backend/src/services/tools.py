@@ -22,7 +22,7 @@ def format_journey_result(db_journey):
             'duration': db_journey[8]}
 
 
-def parse_to_int(value, default):
+def parse_to_int(value, default: int):
     try:
         return int(value)
     except:

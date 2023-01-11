@@ -1,7 +1,7 @@
 from app import app
 from services import stations_service
 from flask import request
-from services.journeys_service import import_journey_csv, get_journeys
+from services.journeys_service import import_journey_csv, get_journeys, get_last_page
 from services.geocoding_service import get_address
 
 
@@ -38,3 +38,9 @@ def journeys():
 def address():
     params = request.args.to_dict()
     return get_address(params.get('lat'), params.get('lng'))
+
+
+@app.route('/api/journeys/last_page', methods=['GET'])
+def last_page():
+    params = request.args.to_dict()
+    return {'last_page': get_last_page(params.get('page_size'))}
