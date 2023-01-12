@@ -37,30 +37,27 @@ const Map = ({ stations, popup, center, zoom }: Props) => {
 						url="https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"
 					/>
 				</LayersControl.BaseLayer>
-				{
-					// @ts-expect-error original library is deprecated and this one doesn't have types
-					<MarkerClusterGroup
-						showCoverageOnHover={false}
-						removeOutsideVisibleBounds={true}
-						maxClusterRadius={50}
-					>
-						{stations.map(station => (
-							<Marker
-								key={station.id}
-								position={[station.latlng[0], station.latlng[1]]}
-								title={station.latlng.toString()}
-							>
-								{popup && (
-									<Popup>
-										<b>{station.name}</b>
-										<br />
-										ID: {station.id}
-									</Popup>
-								)}
-							</Marker>
-						))}
-					</MarkerClusterGroup>
-				}
+				<MarkerClusterGroup
+					showCoverageOnHover={false}
+					removeOutsideVisibleBounds={true}
+					maxClusterRadius={50}
+				>
+					{stations.map(station => (
+						<Marker
+							key={station.id}
+							position={[station.latlng[0], station.latlng[1]]}
+							title={station.latlng.toString()}
+						>
+							{popup && (
+								<Popup>
+									<b>{station.name}</b>
+									<br />
+									ID: {station.id}
+								</Popup>
+							)}
+						</Marker>
+					))}
+				</MarkerClusterGroup>
 			</LayersControl>
 		</LeafletMap>
 	)
