@@ -1,7 +1,8 @@
 # Frontend
 Run all the following commands in the `frontend`-directory.
 ## Installation
-Requires Node version 16+ and npm.
+| Requires Node version 16+ and npm. |
+|------------------------------------|
 
 Install depedencies
 ```bash
