@@ -8,7 +8,8 @@ Run all the following commands in the `backend`-directory.
 
 ## Installation
 
-Requires Python version 3.8+ and pip.
+| Requires Python version 3.8+ and pip. |
+|---------------------------------------|
 
 Create and activate a virtual environment and install depedencies:
 
