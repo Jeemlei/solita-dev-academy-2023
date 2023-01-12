@@ -58,6 +58,7 @@ This is a pre-assignment submission for Solita Dev Academy Finland 2023.
 #### Additional
 - [x] Pagination
 - [ ] Searching
+- [x] Show all the stations on the map
 
 ### Single station view
 
